@@ -4,8 +4,8 @@ API do projeto Review Raid - Rede social de Review de Jogos
 
 ## Requisitos
 
-- [ ] CRUD de Categorias
-- [ ] CRUD de Movimentações
+- [ ] CRUD de Jogos
+- [ ] CRUD de Tags
 - [ ] CRUD de Usuários
 - [ ] Autenticação
 - [ ] Dashboard
@@ -14,30 +14,36 @@ API do projeto Review Raid - Rede social de Review de Jogos
 
 ### Endpoints
 
-- [Listar Categorias](#listar-categorias)
-- [Cadastrar Categorias](#cadastrar-categoria)
-- [Detalhes da Categoria](#detalhes-da-categoria)
-- [Apagar Categoria](#apagar-categoria)
-- [Atualizar Categoria](#atualizar-categoria)
+- [Listar Jogos](#listar-jogos)
+- [Cadastrar Jogos](#cadastrar-jogo)
+- [Detalhes do Jogo](#detalhes-do-jogo)
+- [Apagar Jogo](#apagar-jogo)
+- [Atualizar Jogo](#atualizar-jogo)
 
-### Listar Categorias
+### Listar Jogos
 
-`GET` /categoria
+`GET` /jogos
 
-Retorna um array com todas as categorias cadastradas.
+Retorna um array com todos os jogos cadastradas.
 
 #### Exemplo de Resposta
 ```js
 [
     {
         "id": 1,
-        "nome": "Aventura",
-        "icone": "adventure"
+        "nome": "It Takes Two",
+        "image": "ittakestwo.jpg",
+        "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+        "launch_date": "26/03/2021",
+        "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
     },
     {
         "id": 2,
-        "nome": "Ação",
-        "icone": "action"
+        "nome": "God Of War",
+        "image": "godofwar18.jpg",
+        "description": "Muitos anos se passaram desde que Kratos teve sua vingança contra os deuses do Olimpo, e agora ele vive com seu filho Atreus em Midgard. O jogo começa após a morte da segunda esposa de Kratos e mãe de Atreus, Faye. Seu último desejo era que suas cinzas fossem espalhadas no pico mais alto dos nove reinos nórdicos. Antes de iniciar sua jornada, Kratos é confrontado por um homem misterioso com poderes divinos. Depois de aparentemente matá-lo, Kratos e Atreus partem em sua jornada.",
+        "launch_date": "20/04/2018",
+        "tags":["Ação", "Aventura", "Um Jogador", "RPG"]
     }
 ]
 ```
@@ -49,9 +55,9 @@ Retorna um array com todas as categorias cadastradas.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
 
-### Cadastrar Categoria
+### Cadastrar Jogo
 
-`POST` /categoria
+`POST` /jogos
 
 Cadastrar uma nova categoria para o usuário logado com os dados enviados no corpo da requisição.
 
@@ -59,13 +65,19 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 
 | campo | tipo | obrigatório | descrição
 |-------|------|-------------|----------
-| nome | string | ✅ | Nome curto para a categoria.
-| icone | string | ❌ | O nome do ícone conforme Material Icons.
+| nome | string | ✅ | Nome do jogo.
+| image | image | ✅ | Imagem do jogo.
+| description | string | ✅ | Descrição do jogo.
+| launch_date | string | ✅ | Data de lançamento do jogo.
+| tags | string | ✅ | Tags para identificação das categorias do jogo.
 
 ```js
 {
-    "nome": "Aventura",
-    "icone": "adventure"
+    "nome": "It Takes Two",
+    "image": "ittakestwo.jpg",
+    "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+    "launch_date": "26/03/2021",
+    "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
 }
 ```
 
@@ -74,13 +86,11 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 [
     {
         "id": 1,
-        "nome": "Aventura",
-        "icone": "adventure"
-    },
-    {
-        "id": 2,
-        "nome": "Ação",
-        "icone": "action"
+        "nome": "It Takes Two",
+        "image": "ittakestwo.jpg",
+        "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+        "launch_date": "26/03/2021",
+        "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
     }
 ]
 ```
@@ -92,19 +102,22 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
-### Detalhes da Categoria
+### Detalhes do Jogo
 
 `GET` /categoria/{id}
 
-Retorna os dados detalhados da categoria com o `id` informado no parâmetro de path.
+Retorna os dados detalhados do jogo com o `id` informado no parâmetro de path.
 
 #### Exemplo de Resposta
 ```js
-// requisição para /categoria/1
+// requisição para /jogos/1
 {
     "id": 1,
-    "nome": "Aventura",
-    "icone": "adventure"
+    "nome": "It Takes Two",
+    "image": "ittakestwo.jpg",
+    "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+    "launch_date": "26/03/2021",
+    "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
 }
 ```
 
@@ -113,26 +126,26 @@ Retorna os dados detalhados da categoria com o `id` informado no parâmetro de p
 |--------|----------
 | 200 | Dados da categoria retornados com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /categoria.
+| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
 
-### Apagar Categoria
+### Apagar Jogo
 
-`DELETE` /categoria/{id}
+`DELETE` /jogos/{id}
 
-Apaga categoria indicada pelo `id` informado no parâmetro de path.
+Apaga jogo indicada pelo `id` informado no parâmetro de path.
 
 #### Código de Status
 | código | descrição
 |--------|----------
 | 204 | Categoria apagada com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /categoria.
+| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
 
-### Atualizar Categoria
+### Atualizar Jogo
 
-`PUT` /categoria/{id}
+`PUT` /jogos/{id}
 
-Atualizar os dados da categoria com o `id` informado no parâmetro de path, utilizando os novos dados enviados no corpo da requisição.
+Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizando os novos dados enviados no corpo da requisição.
 
 #### Corpo da Requisição
 
@@ -144,8 +157,11 @@ Atualizar os dados da categoria com o `id` informado no parâmetro de path, util
 ```js
 {
     "id": 1,
-    "nome": "Aventura",
-    "icone": "adventure"
+    "nome": "It Takes Two",
+    "image": "ittakestwo.jpg",
+    "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+    "launch_date": "26/03/2021",
+    "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
 }
 ```
 #### Exemplo de Resposta
@@ -153,8 +169,11 @@ Atualizar os dados da categoria com o `id` informado no parâmetro de path, util
 ```js
 {
     "id": 1,
-    "nome": "Aventura",
-    "icone": "adventure"
+    "nome": "It Takes Two",
+    "image": "ittakestwo.jpg",
+    "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
+    "launch_date": "26/03/2021",
+    "tags":["Aventura", "Co-Op", "Multijogador", "Plataforma"]
 }
 ```
 
@@ -164,4 +183,4 @@ Atualizar os dados da categoria com o `id` informado no parâmetro de path, util
 | 200 | Dados da categoria retornados com sucesso.
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /categoria.
+| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
