@@ -4,7 +4,7 @@ API do projeto Review Raid - Rede social de Review de Jogos
 
 ## Requisitos
 
-- [ ] CRUD de Jogos
+- [x] CRUD de Jogos
 - [ ] CRUD de Tags
 - [ ] CRUD de Usuários
 - [ ] Autenticação
@@ -64,7 +64,7 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 #### Corpo da Requisição
 
 | campo | tipo | obrigatório | descrição
-|-------|------|-------------|----------
+|-------|------|:-----------:|----------
 | nome | string | ✅ | Nome do jogo.
 | image | image | ✅ | Imagem do jogo.
 | description | string | ✅ | Descrição do jogo.
@@ -150,7 +150,7 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 #### Corpo da Requisição
 
 | campo | tipo | obrigatório | descrição
-|-------|------|-------------|----------
+|-------|------|:-----------:|----------
 | nome | string | ✅ | Nome curto para a categoria.
 | icone | string | ✅ | O nome do ícone conforme Material Icons.
 
