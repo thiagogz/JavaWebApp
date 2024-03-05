@@ -66,10 +66,10 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 | campo | tipo | obrigatório | descrição
 |-------|------|:-----------:|----------
 | nome | string | ✅ | Nome do jogo.
-| image | image | ✅ | Imagem do jogo.
+| image | string | ✅ | Imagem do jogo.
 | description | string | ✅ | Descrição do jogo.
 | launch_date | string | ✅ | Data de lançamento do jogo.
-| tags | string | ✅ | Tags para identificação das categorias do jogo.
+| tags | list | ✅ | Tags para identificação das categorias do jogo.
 
 ```js
 {
@@ -151,12 +151,14 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 
 | campo | tipo | obrigatório | descrição
 |-------|------|:-----------:|----------
-| nome | string | ✅ | Nome curto para a categoria.
-| icone | string | ✅ | O nome do ícone conforme Material Icons.
+| nome | string | ✅ | Nome do jogo.
+| image | string | ✅ | Imagem do jogo.
+| description | string | ✅ | Descrição do jogo.
+| launch_date | string | ✅ | Data de lançamento do jogo.
+| tags | list | ✅ | Tags para identificação das categorias do jogo.
 
 ```js
 {
-    "id": 1,
     "nome": "It Takes Two",
     "image": "ittakestwo.jpg",
     "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
