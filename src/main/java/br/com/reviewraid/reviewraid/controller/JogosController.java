@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,79 +20,82 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.reviewraid.reviewraid.model.Jogos;
+import br.com.reviewraid.reviewraid.repository.JogosRepository;
 
 @RestController
 @RequestMapping("/jogos")
 public class JogosController {
 
     Logger log = LoggerFactory.getLogger(getClass());
-    List<Jogos> repository = new ArrayList<>();
+
+    @Autowired
+    JogosRepository repository;
 
     @GetMapping
     public List<Jogos> listarJogos() {
-        return repository;
+        return repository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Jogos cadastrarJogo(@RequestBody Jogos jogo) {
         log.info("Cadastrando jogo: {}", jogo);
-        repository.add(jogo);
+        repository.save(jogo);
         return jogo;
     }
     
-    @GetMapping("{id}")
-    public ResponseEntity<Jogos> listarJogo(@PathVariable Long id){
-        log.info("Buscando jogo por id {}", id);
+    // @GetMapping("{id}")
+    // public ResponseEntity<Jogos> listarJogo(@PathVariable Long id){
+    //     log.info("Buscando jogo por id {}", id);
 
-        var jogoEscolhido = getJogoById(id);
+    //     var jogoEscolhido = getJogoById(id);
 
-        if (jogoEscolhido.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    //     if (jogoEscolhido.isEmpty()){
+    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    //     }
 
-        return ResponseEntity.ok(jogoEscolhido.get());
-    }
+    //     return ResponseEntity.ok(jogoEscolhido.get());
+    // }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Object> deletarJogo(@PathVariable Long id){
-        log.info("Deletando jogo");
+    // @DeleteMapping("{id}")
+    // public ResponseEntity<Object> deletarJogo(@PathVariable Long id){
+    //     log.info("Deletando jogo");
 
-        var jogoEscolhido = getJogoById(id);
+    //     var jogoEscolhido = getJogoById(id);
 
-        if (jogoEscolhido.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    //     if (jogoEscolhido.isEmpty()){
+    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    //     }
 
-        repository.remove(jogoEscolhido.get());
+    //     repository.remove(jogoEscolhido.get());
     
-        return ResponseEntity.noContent().build();
-    }
+    //     return ResponseEntity.noContent().build();
+    // }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Jogos> atualizarJogos(@PathVariable Long id, @RequestBody Jogos jogo){
-        log.info("Atualizando jogo com id {} para {}", id, jogo);
+    // @PutMapping("{id}")
+    // public ResponseEntity<Jogos> atualizarJogos(@PathVariable Long id, @RequestBody Jogos jogo){
+    //     log.info("Atualizando jogo com id {} para {}", id, jogo);
 
-        var jogoEscolhido = getJogoById(id);
+    //     var jogoEscolhido = getJogoById(id);
 
-        if (jogoEscolhido.isEmpty()){
-            return ResponseEntity.notFound().build();
-        }
+    //     if (jogoEscolhido.isEmpty()){
+    //         return ResponseEntity.notFound().build();
+    //     }
 
-        var jogoAntigo = jogoEscolhido.get();
-        var jogoNovo = new Jogos(id, jogo.nome(), jogo.image(), jogo.description(), jogo.launch_date(), jogo.tags());
+    //     var jogoAntigo = jogoEscolhido.get();
+    //     var jogoNovo = new Jogos(id, jogo.name(), jogo.image(), jogo.description(), jogo.launch_date(), jogo.tags());
 
-        repository.remove(jogoAntigo);
-        repository.add(jogoNovo);
+    //     repository.remove(jogoAntigo);
+    //     repository.add(jogoNovo);
 
-        return ResponseEntity.ok(jogoNovo);
-    }
+    //     return ResponseEntity.ok(jogoNovo);
+    // }
 
-    private Optional<Jogos> getJogoById(Long id) {
-        var jogoEncontrado = repository
-            .stream()
-            .filter( (c) -> c.id().equals(id))
-            .findFirst();
-        return jogoEncontrado;
-    }
+    // private Optional<Jogos> getJogoById(Long id) {
+    //     var jogoEncontrado = repository
+    //         .stream()
+    //         .filter( (c) -> c.id().equals(id))
+    //         .findFirst();
+    //     return jogoEncontrado;
+    //}
 }
