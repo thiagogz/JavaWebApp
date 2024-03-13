@@ -51,7 +51,7 @@ Retorna um array com todos os jogos cadastradas.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Categorias retornadas com sucesso.
+| 200 | Jogos retornadas com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
 
@@ -59,7 +59,7 @@ Retorna um array com todos os jogos cadastradas.
 
 `POST` /jogos
 
-Cadastrar uma nova categoria para o usuário logado com os dados enviados no corpo da requisição.
+Cadastrar um novo jogo para o usuário logado com os dados enviados no corpo da requisição.
 
 #### Corpo da Requisição
 
@@ -98,7 +98,7 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 #### Código de Status
 | código | descrição
 |--------|----------
-| 201 | Categoria cadastrada com sucesso.
+| 201 | Jogo cadastrado com sucesso.
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
@@ -124,9 +124,9 @@ Retorna os dados detalhados do jogo com o `id` informado no parâmetro de path.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Dados da categoria retornados com sucesso.
+| 200 | Dados do jogo retornados com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
 
 ### Apagar Jogo
 
@@ -137,9 +137,9 @@ Apaga jogo indicada pelo `id` informado no parâmetro de path.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 204 | Categoria apagada com sucesso.
+| 204 | Jogo apagado com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
 
 ### Atualizar Jogo
 
@@ -151,11 +151,11 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 
 | campo | tipo | obrigatório | descrição
 |-------|------|:-----------:|----------
-| name | string | ✅ | Nome do jogo.
-| image | string | ✅ | Imagem do jogo.
-| description | string | ✅ | Descrição do jogo.
-| launch_date | string | ✅ | Data de lançamento do jogo.
-| tags | list | ✅ | Tags para identificação das categorias do jogo.
+| name | string | ❌ | Nome do jogo.
+| image | string | ❌ | Imagem do jogo.
+| description | string | ❌ | Descrição do jogo.
+| launch_date | string | ❌ | Data de lançamento do jogo.
+| tags | list | ❌ | Tags para identificação das categorias do jogo.
 
 ```js
 {
@@ -182,7 +182,7 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Dados da categoria retornados com sucesso.
+| 200 | Dados do jogo retornados com sucesso.
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
