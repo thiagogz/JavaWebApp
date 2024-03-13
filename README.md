@@ -31,7 +31,7 @@ Retorna um array com todos os jogos cadastradas.
 [
     {
         "id": 1,
-        "nome": "It Takes Two",
+        "name": "It Takes Two",
         "image": "ittakestwo.jpg",
         "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
         "launch_date": "26/03/2021",
@@ -39,7 +39,7 @@ Retorna um array com todos os jogos cadastradas.
     },
     {
         "id": 2,
-        "nome": "God Of War",
+        "name": "God Of War",
         "image": "godofwar18.jpg",
         "description": "Muitos anos se passaram desde que Kratos teve sua vingança contra os deuses do Olimpo, e agora ele vive com seu filho Atreus em Midgard. O jogo começa após a morte da segunda esposa de Kratos e mãe de Atreus, Faye. Seu último desejo era que suas cinzas fossem espalhadas no pico mais alto dos nove reinos nórdicos. Antes de iniciar sua jornada, Kratos é confrontado por um homem misterioso com poderes divinos. Depois de aparentemente matá-lo, Kratos e Atreus partem em sua jornada.",
         "launch_date": "20/04/2018",
@@ -51,7 +51,7 @@ Retorna um array com todos os jogos cadastradas.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Categorias retornadas com sucesso.
+| 200 | Jogos retornadas com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
 
@@ -59,13 +59,13 @@ Retorna um array com todos os jogos cadastradas.
 
 `POST` /jogos
 
-Cadastrar uma nova categoria para o usuário logado com os dados enviados no corpo da requisição.
+Cadastrar um novo jogo para o usuário logado com os dados enviados no corpo da requisição.
 
 #### Corpo da Requisição
 
 | campo | tipo | obrigatório | descrição
 |-------|------|:-----------:|----------
-| nome | string | ✅ | Nome do jogo.
+| name | string | ✅ | Nome do jogo.
 | image | string | ✅ | Imagem do jogo.
 | description | string | ✅ | Descrição do jogo.
 | launch_date | string | ✅ | Data de lançamento do jogo.
@@ -73,7 +73,7 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 
 ```js
 {
-    "nome": "It Takes Two",
+    "name": "It Takes Two",
     "image": "ittakestwo.jpg",
     "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
     "launch_date": "26/03/2021",
@@ -86,7 +86,7 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 [
     {
         "id": 1,
-        "nome": "It Takes Two",
+        "name": "It Takes Two",
         "image": "ittakestwo.jpg",
         "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
         "launch_date": "26/03/2021",
@@ -98,7 +98,7 @@ Cadastrar uma nova categoria para o usuário logado com os dados enviados no cor
 #### Código de Status
 | código | descrição
 |--------|----------
-| 201 | Categoria cadastrada com sucesso.
+| 201 | Jogo cadastrado com sucesso.
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 
@@ -113,7 +113,7 @@ Retorna os dados detalhados do jogo com o `id` informado no parâmetro de path.
 // requisição para /jogos/1
 {
     "id": 1,
-    "nome": "It Takes Two",
+    "name": "It Takes Two",
     "image": "ittakestwo.jpg",
     "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
     "launch_date": "26/03/2021",
@@ -124,9 +124,9 @@ Retorna os dados detalhados do jogo com o `id` informado no parâmetro de path.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Dados da categoria retornados com sucesso.
+| 200 | Dados do jogo retornados com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
 
 ### Apagar Jogo
 
@@ -137,9 +137,9 @@ Apaga jogo indicada pelo `id` informado no parâmetro de path.
 #### Código de Status
 | código | descrição
 |--------|----------
-| 204 | Categoria apagada com sucesso.
+| 204 | Jogo apagado com sucesso.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
 
 ### Atualizar Jogo
 
@@ -151,15 +151,15 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 
 | campo | tipo | obrigatório | descrição
 |-------|------|:-----------:|----------
-| nome | string | ✅ | Nome do jogo.
-| image | string | ✅ | Imagem do jogo.
-| description | string | ✅ | Descrição do jogo.
-| launch_date | string | ✅ | Data de lançamento do jogo.
-| tags | list | ✅ | Tags para identificação das categorias do jogo.
+| name | string | ❌ | Nome do jogo.
+| image | string | ❌ | Imagem do jogo.
+| description | string | ❌ | Descrição do jogo.
+| launch_date | string | ❌ | Data de lançamento do jogo.
+| tags | list | ❌ | Tags para identificação das categorias do jogo.
 
 ```js
 {
-    "nome": "It Takes Two",
+    "name": "It Takes Two",
     "image": "ittakestwo.jpg",
     "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
     "launch_date": "26/03/2021",
@@ -171,7 +171,7 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 ```js
 {
     "id": 1,
-    "nome": "It Takes Two",
+    "name": "It Takes Two",
     "image": "ittakestwo.jpg",
     "description": "Jogue no papel do conflituoso casal Cody e May, dois humanos transformados em bonecos por um feitiço. Juntos, presos em um mundo fantástico onde o imprevisível está sempre à espreita, são obrigados a trabalhar para salvar seu relacionamento conturbado. Domine habilidades de personagem únicas e interligadas em cada nível. Ajude e receba ajuda em obstáculos inesperados e momentos divertidos.",
     "launch_date": "26/03/2021",
@@ -182,7 +182,7 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 #### Código de Status
 | código | descrição
 |--------|----------
-| 200 | Dados da categoria retornados com sucesso.
+| 200 | Dados do jogo retornados com sucesso.
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
-| 404 | Não existe categoria com o `id` informado. Consulte lista em /jogos.
+| 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
