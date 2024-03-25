@@ -1,9 +1,10 @@
 package br.com.reviewraid.reviewraid.controller;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.reviewraid.reviewraid.model.Jogos;
 import br.com.reviewraid.reviewraid.repository.JogosRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/jogos")
+@Slf4j
 public class JogosController {
-
-    Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     JogosRepository repository;
@@ -36,11 +37,10 @@ public class JogosController {
     }
 
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseStatus(CREATED)
     public Jogos cadastrarJogo(@RequestBody Jogos jogo) {
         log.info("Cadastrando jogo: {}", jogo);
-        repository.save(jogo);
-        return jogo;
+        return repository.save(jogo);
     }
     
     @GetMapping("{id}")
@@ -54,24 +54,21 @@ public class JogosController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Object> deletarJogo(@PathVariable Long id){
+    @ResponseStatus(NO_CONTENT)
+    public void deletarJogo(@PathVariable Long id){
         log.info("Deletando jogo");
 
         verificarExistenciaJogo(id);
-        
         repository.deleteById(id);
-        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Jogos> atualizarJogos(@PathVariable Long id, @RequestBody Jogos jogo){
+    public Jogos atualizarJogos(@PathVariable Long id, @RequestBody Jogos jogo){
         log.info("Atualizando jogo com id {} para {}", id, jogo);
         
         verificarExistenciaJogo(id);
-        
         jogo.setId(id);
-        repository.save(jogo);
-        return ResponseEntity.ok(jogo);
+        return repository.save(jogo);
     }
 
     private void verificarExistenciaJogo(Long id) {

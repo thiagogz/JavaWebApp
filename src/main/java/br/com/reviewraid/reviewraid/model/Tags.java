@@ -8,14 +8,10 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Jogos extends Object{
+public class Tags {
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String image;
-    private String description;
-    private String launch_date;
-    private String[] tags;
-
+    private String nome;
+    private String descricao;
 }
