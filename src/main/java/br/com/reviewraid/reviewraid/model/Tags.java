@@ -1,5 +1,6 @@
 package br.com.reviewraid.reviewraid.model;
 
+import br.com.reviewraid.reviewraid.validation.TipoTags;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +16,13 @@ public class Tags {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Nome da tag é obrigatória")
-    @Size(min = 3, max = 255, message = "O nome da tag deve ter pelo menos 3 caracteres")
+    @NotBlank(message = "{tags.nome.notblank}")
+    @Size(min = 3, max = 255, message = "{tags.nome.size}")
     private String nome;
 
-    @Size(min = 3, max = 255, message = "A descrição deve ter pelo menos 3 caracteres")
+    @Size(min = 3, max = 255, message = "{tags.descricao.size}")
     private String descricao;
+
+    @TipoTags
+    private String tipo;
 }

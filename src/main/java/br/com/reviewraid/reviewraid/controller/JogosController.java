@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.reviewraid.reviewraid.model.Jogos;
 import br.com.reviewraid.reviewraid.repository.JogosRepository;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -38,7 +39,7 @@ public class JogosController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Jogos cadastrarJogo(@RequestBody Jogos jogo) {
+    public Jogos cadastrarJogo(@RequestBody @Valid Jogos jogo) {
         log.info("Cadastrando jogo: {}", jogo);
         return repository.save(jogo);
     }
