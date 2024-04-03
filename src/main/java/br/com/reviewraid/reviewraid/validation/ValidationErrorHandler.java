@@ -22,10 +22,12 @@ public class ValidationErrorHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(BAD_REQUEST)
     public List<ValidationError> handle(MethodArgumentNotValidException exception){
+
         return exception
-            .getFieldErrors()
-            .stream()
-            .map(ValidationError::new)
-            .toList();
+                    .getFieldErrors()
+                    .stream()
+                    .map(ValidationError::new)
+                    .toList();
     }
+
 }

@@ -11,16 +11,16 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Tags {
+public class Tags extends Object{
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "{tags.nome.notblank}")
+    @NotBlank(message =  "{tags.nome.notblank}")
     @Size(min = 3, max = 255, message = "{tags.nome.size}")
     private String nome;
 
-    @Size(min = 3, max = 255, message = "{tags.descricao.size}")
+    @Size(min = 3, max = 255, message = "erro")
     private String descricao;
 
     @TipoTags

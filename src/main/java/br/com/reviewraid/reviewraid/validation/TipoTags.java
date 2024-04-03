@@ -13,6 +13,6 @@ import jakarta.validation.Payload;
 @Constraint(validatedBy = TipoTagsValidator.class)
 public @interface TipoTags {
     String message() default "{tags.tipo.message}";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+	Class<?>[] groups() default { };
+	Class<? extends Payload>[] payload() default { };
 }

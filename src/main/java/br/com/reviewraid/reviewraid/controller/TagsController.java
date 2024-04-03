@@ -25,12 +25,12 @@ public class TagsController {
     @Autowired
     TagsRepository repository;
     
-    @GetMapping("path")
+    @GetMapping
     public List<Tags> listarTags() {
         return repository.findAll();
     }
 
-    @PostMapping("path")
+    @PostMapping
     @ResponseStatus(CREATED)
     public Tags criarTags(@RequestBody Tags tag) {
         return repository.save(tag);
