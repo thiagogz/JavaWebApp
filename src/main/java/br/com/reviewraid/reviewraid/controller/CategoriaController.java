@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.reviewraid.reviewraid.model.Categoria;
 import br.com.reviewraid.reviewraid.repository.CategoriaRepository;
+import jakarta.validation.Valid;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -32,7 +33,7 @@ public class CategoriaController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Categoria criarCategorias(@RequestBody Categoria categoria) {
+    public Categoria criarCategorias(@RequestBody @Valid Categoria categoria) {
         return repository.save(categoria);
     }
     

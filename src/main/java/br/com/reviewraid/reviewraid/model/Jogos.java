@@ -29,7 +29,6 @@ public class Jogos extends Object{
     @NotBlank(message =  "{jogos.date.notblank}")
     private String launch_date;
 
-    @NotBlank(message =  "{jogos.tags.notblank}")
     private String[] tags;
 
 }

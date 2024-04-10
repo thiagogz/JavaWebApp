@@ -16,6 +16,8 @@ public class Categoria extends Object{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message =  "{tags.nome.notblank}")
+    @Size(min = 3, max = 255, message = "{tags.nome.size}")
     private String nome;
 
     @Size(min = 3, max = 255, message = "erro")
