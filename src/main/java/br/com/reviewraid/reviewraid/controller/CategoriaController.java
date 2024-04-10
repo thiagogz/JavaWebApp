@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.reviewraid.reviewraid.model.Tags;
-import br.com.reviewraid.reviewraid.repository.TagsRepository;
+import br.com.reviewraid.reviewraid.model.Categoria;
+import br.com.reviewraid.reviewraid.repository.CategoriaRepository;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -19,21 +19,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("tags")
-public class TagsController {
+@RequestMapping("categorias")
+public class CategoriaController {
     
     @Autowired
-    TagsRepository repository;
+    CategoriaRepository repository;
     
     @GetMapping
-    public List<Tags> listarTags() {
+    public List<Categoria> listarCategorias() {
         return repository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Tags criarTags(@RequestBody Tags tag) {
-        return repository.save(tag);
+    public Categoria criarCategorias(@RequestBody Categoria categoria) {
+        return repository.save(categoria);
     }
     
     
