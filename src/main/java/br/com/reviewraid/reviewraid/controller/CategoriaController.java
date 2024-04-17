@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.reviewraid.reviewraid.model.Categoria;
-import br.com.reviewraid.reviewraid.model.Jogos;
 import br.com.reviewraid.reviewraid.repository.CategoriaRepository;
 import jakarta.validation.Valid;
 
