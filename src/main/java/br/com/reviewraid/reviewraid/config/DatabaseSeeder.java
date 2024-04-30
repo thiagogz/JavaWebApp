@@ -41,7 +41,7 @@ public class DatabaseSeeder implements CommandLineRunner{
                     .name("Baldur's Gate 3")
                     .image("https://upload.wikimedia.org/wikipedia/pt/1/18/Baldur%27s_Gate_III_Larian_Studios_key_art.png")
                     .description("Game of the Year de 2023, Baldur's Gate 3 é um RPG de ação e aventura que promete muitas horas de diversão e desafios. Com gráficos incríveis e uma história envolvente, o jogo é uma ótima pedida para quem gosta de jogos de RPG.")
-                    .launch_date("03/10/2023")
+                    .launchDate("03/10/2023")
                     .categoria(categoriaRepository.findById(5L).get())
                     .build(),
                 Jogos.builder()
@@ -49,7 +49,7 @@ public class DatabaseSeeder implements CommandLineRunner{
                     .name("It Takes Two")
                     .image("https://upload.wikimedia.org/wikipedia/pt/d/dd/It_Takes_Two_capa.jpg")
                     .description("Com uma proposta inovadora e divertida, It Takes Two é um jogo cooperativo que exige trabalho em equipe e muita comunicação. Com gráficos incríveis e uma história envolvente, o jogo é uma ótima pedida para quem gosta de jogos multiplayer.")
-                    .launch_date("25/03/2021")
+                    .launchDate("25/03/2021")
                     .categoria(categoriaRepository.findById(2L).get())
                     .build(),
                 Jogos.builder()
@@ -57,7 +57,7 @@ public class DatabaseSeeder implements CommandLineRunner{
                     .name("God of War: Ragnarok")
                     .image("https://upload.wikimedia.org/wikipedia/pt/a/a5/God_of_War_Ragnarök_capa.jpg")
                     .description("Tendo como pano de fundo a mitologia nórdica, God of War: Ragnarok é um jogo de ação e aventura que promete muitas horas de diversão e desafios. Com gráficos incríveis e uma história envolvente, o jogo é uma ótima pedida para quem gosta de jogos de ação.")
-                    .launch_date("09/11/2022")
+                    .launchDate("09/11/2022")
                     .categoria(categoriaRepository.findById(3L).get())
                     .build()
             )

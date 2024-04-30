@@ -37,7 +37,7 @@ public class Jogos extends Object{
 
     @NotBlank(message =  "{jogos.date.notblank}")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private String launch_date;
+    private String launchDate;
 
     @ManyToOne
     private Categoria categoria;
