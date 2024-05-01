@@ -15,6 +15,9 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,18 +31,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("categorias")
+@CacheConfig(cacheNames = "categorias")
 public class CategoriaController {
     
     @Autowired
     CategoriaRepository repository;
     
     @GetMapping
+    @Cacheable("categorias")
     public List<Categoria> listarCategorias() {
         return repository.findAll();
     }
 
     @PostMapping
     @ResponseStatus(CREATED)
+    @CacheEvict(allEntries = true)
     public Categoria criarCategorias(@RequestBody @Valid Categoria categoria) {
         return repository.save(categoria);
     }
@@ -54,6 +60,7 @@ public class CategoriaController {
     }
     
     @PutMapping("{id}")
+    @CacheEvict(allEntries = true)
     public Categoria atualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria){
         
         verificarExistenciaCategoria(id);
@@ -63,6 +70,7 @@ public class CategoriaController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
+    @CacheEvict(allEntries = true)
     public void deletarJogo(@PathVariable Long id){
         verificarExistenciaCategoria(id);
         repository.deleteById(id);

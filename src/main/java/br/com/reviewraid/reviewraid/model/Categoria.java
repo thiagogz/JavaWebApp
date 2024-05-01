@@ -22,15 +22,17 @@ public class Categoria extends Object{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message =  "{tags.nome.notblank}")
-    @Size(min = 3, max = 255, message = "{tags.nome.size}")
+    @NotBlank(message =  "{categorias.nome.notblank}")
+    @Size(min = 3, max = 255, message = "{categorias.nome.size}")
     private String nome;
 
     @Size(min = 3, max = 255, message = "erro")
     private String descricao;
 
     @TipoTags
+    @NotBlank(message = "{categorias.tipo.notblank}")
     private String tipo;
 
+    @NotBlank(message = "{categorias.icone.notblank}")
     private String icone;
 }
