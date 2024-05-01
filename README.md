@@ -188,3 +188,4 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 | 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
 
 Link Swagger: http://localhost:8080/swagger-ui/index.html#/
+Ligar a API antes.
