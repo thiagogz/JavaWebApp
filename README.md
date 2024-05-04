@@ -5,7 +5,7 @@ API do projeto Review Raid - Rede social de Review de Jogos
 ## Requisitos
 
 - [x] CRUD de Jogos
-- [ ] CRUD de Tags
+- [ ] CRUD de Categorias
 - [ ] CRUD de Usuários
 - [ ] Autenticação
 - [ ] Dashboard
@@ -186,3 +186,6 @@ Atualizar os dados do jogo com o `id` informado no parâmetro de path, utilizand
 | 400 | Validação falhou. Verifique as regras para o corpo da requisição.
 | 401 | Usuário não autenticado. Realizar autenticação em /login.
 | 404 | Não existe jogo com o `id` informado. Consulte lista em /jogos.
+
+Link Swagger: http://localhost:8080/swagger-ui/index.html#/
+Ligar a API antes.

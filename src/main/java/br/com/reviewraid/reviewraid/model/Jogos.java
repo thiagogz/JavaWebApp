@@ -1,15 +1,24 @@
 package br.com.reviewraid.reviewraid.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Jogos extends Object{
     
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +36,10 @@ public class Jogos extends Object{
     private String description;
 
     @NotBlank(message =  "{jogos.date.notblank}")
-    private String launch_date;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private String launchDate;
 
-    private String[] tags;
+    @ManyToOne
+    private Categoria categoria;
 
 }
